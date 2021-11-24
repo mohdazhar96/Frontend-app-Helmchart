@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  frontend:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2021-11-24T06:36:13.138629268Z"
+    description: A Helm chart for Kubernetes
+    digest: 5fa5bcfe719be87bd3afbb09cf3096babbad12fda439933a55310b803acfe60e
+    name: frontend
+    type: application
+    urls:
+    - frontend-0.1.0.tgz
+    version: 0.1.0
+generated: "2021-11-24T06:36:13.136405558Z"
