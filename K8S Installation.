@@ -1,0 +1,43 @@
+Kubernetes Installation:---
+ubuntu20
+Master
+1. apt update
+2 sudo mkdir -m 755 /etc/apt/keyrings
+3 apt install docker.io
+4 sudo apt-get install -y apt-transport-https ca-certificates curl
+5 curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.27/deb/Release.key | sudo
+gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+6 echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg]
+https://pkgs.k8s.io/core:/stable:/v1.27/deb/ /' | sudo tee
+/etc/apt/sources.list.d/kubernetes.list
+7 apt update
+8 apt install -y kubeadm kubelet kubectl
+9 sudo kubeadm init --pod-network-cidr=192.168.0.0/16 &(copy the token)
+10 mkdir -p $HOME/.kube
+11 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+12 sudo chown $(id -u):$(id -g) $HOME/.kube/config
+13 kubectl create -f
+https://raw.githubusercontent.com/projectcalico/calico/v3.26.1/manifests/tigera-ope
+rator.yaml
+14 kubectl create -f
+https://raw.githubusercontent.com/projectcalico/calico/v3.26.1/manifests/custom-res
+ources.yaml
+15 kubectl get nodes
+17 watch kubectl get pods -n calico-system
+18 kubectl get nodes
+19 kubectl get nodes -w
+20 kubectl get ns
+21 kubectl get pods -n kube-system -w
+Worker
+1 apt update
+2 sudo mkdir -m 755 /etc/apt/keyrings
+3 apt install docker.io
+4 sudo apt-get install -y apt-transport-https ca-certificates curl
+5 curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.27/deb/Release.key | sudo
+gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+6 echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg]
+https://pkgs.k8s.io/core:/stable:/v1.27/deb/ /' | sudo tee
+/etc/apt/sources.list.d/kubernetes.list
+7 apt update
+8. apt install -y kubeadm
+9. copy that join command in worker
